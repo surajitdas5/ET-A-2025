@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul li{
+            border: 1px solid gray;
+            padding: 4px;
+            margin: 4px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="langName" placeholder="Enter a Language">
+    <button onclick="addItem()">Add</button>
+    <ul id="languages">
+        <li>C</li>
+        <li>C++</li>
+    </ul>
+
+    <script>
+        // let li = "<li>Java</li>"
+        // let li = document.createElement("li")
+        // li.innerHTML = "Java"
+        // li.className = "test"
+        // li.onclick = function(){
+        //     alert("Clicked")
+        // }
+        // console.log(li);
+        
+
+        // document.getElementById("languages").innerHTML = li
+        // document.getElementById("languages").appendChild(li)
+    
+        function addItem(){
+            let name = document.getElementById("langName").value
+            // console.log(name);
+            if(name == ""){
+                alert("Please enter a language name")
+                return
+            }
+            let newLi = document.createElement("li")
+            newLi.innerHTML = name
+            
+            document.getElementById("languages").appendChild(newLi)
+            document.getElementById("langName").value = ""
+            
+        }
+    </script>
+</body>
+</html>

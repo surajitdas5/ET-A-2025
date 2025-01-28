@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #html{
+            /* color: red; */
+        }
+        .mycss-1{
+            color: #fff;
+            background-color: #000;
+            font-size: 100px;
+        }
+        .mycss-2{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="html">HTML</h1>
+    <button onclick="applyStyle()">Apply Style</button>
+    <button onclick="removeStyle()">Remove Style</button>
+    <button onclick="toggleStyle()">Toggle Style</button>
+    <button onclick="showHide()">Show/Hide</button>
+    <!-- <h1>CSS</h1>
+    <h1>JS</h1>
+    <h1 id="jq">jQuery</h1> -->
+
+    <script>
+        // let elm = document.getElementById("html")
+        // console.log(elm);
+        // elm.innerText="Hello JS"
+        // elm.innerText="<u>Hello JS</u>"
+        // elm.innerHTML="<u>Hello JS</u>"
+
+        // let elms = document.getElementsByTagName("h1")
+        // console.log(elms);
+
+        // for(let i=0; i<elms.length; i++){
+        //     console.log( elms[i].innerHTML)
+        // }
+
+        // let html = document.getElementById("html")
+        // html.style.color = "blue"
+        // html.style.backgroundColor = "yellow"
+        // html.style.textDecoration = "underline"
+        // html.classList.add("mycss-1")
+        // html.classList.add("mycss-1", "mycss-2")
+        
+        let html = document.getElementById("html")
+        function applyStyle(){
+            html.classList.add("mycss-1")
+        }
+        function removeStyle(){
+            html.classList.remove("mycss-1")
+        }
+        function toggleStyle(){
+            html.classList.toggle("mycss-1")
+        }
+
+        function showHide(){
+            html.classList.toggle("mycss-2")
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+
+    <script>
+        // let h1 = "<h1>Hello JS</h1>";
+        // document.getElementById("container").innerHTML = h1
+        // let languages = ['C', 'C++', 'Java', 'Python']
+        
+        // let langStr = "<ul>";
+        // for(let i=0; i<languages.length; i++){
+        //     langStr += "<li>"+languages[i]+"</li>";
+        // }
+        // langStr += "</ul>"
+
+        // console.log(langStr);
+        
+        // document.getElementById("container").innerHTML = langStr
+
+
+        let nums = [10, 2, 12, 15, 5, 20, 30, 100]
+        let btnStr = "";
+        for(let i=0; i<nums.length; i++){
+            btnStr += "<button onclick=showNumber("+nums[i]+")>"
+            btnStr += nums[i]
+            btnStr += "</button>"
+        }
+
+        function showNumber(n){
+            alert("You have clicked on "+ n)
+        }
+        document.getElementById("container").innerHTML = btnStr
+
+    </script>
+</body>
+</html>
