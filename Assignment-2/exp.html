@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div>
+            <input name="organization" placeholder="Organization Name">
+            <input name="designation" placeholder="Designation">
+            <input name="duration" placeholder="Duration">
+        </div>
+    </div>
+    <button onclick="addMore()">Add More</button>
+    <button onclick="display()">Dispaly</button>
+
+    <script>
+        function addMore(){
+            let newDiv = document.createElement("div")
+            let newInputOrg = document.createElement("input")
+            let newInputDes = document.createElement("input")
+            let newInputDur = document.createElement("input")
+
+            newInputOrg.name = "organization"
+            newInputOrg.placeholder = "Organization Name"
+            newInputDes.name = "designation"
+            newInputDes.placeholder = "designation"
+            newInputDur.name = "duration"
+            newInputDur.placeholder = "duration"
+
+            newDiv.appendChild(newInputOrg)
+            newDiv.appendChild(newInputDes)
+            newDiv.appendChild(newInputDur)
+
+            document.getElementById("container").appendChild(newDiv)
+        }
+
+        function display(){
+            let organizations =  document.getElementsByName("organization")
+            let designations =  document.getElementsByName("designation")
+            let durations =  document.getElementsByName("duration")
+
+            let allExp = []
+            for(let i=0; i<durations.length; i++){
+                let exp = {}
+                exp['organization'] = organizations[i].value
+                exp['designation'] = designations[i].value
+                exp['duration'] = durations[i].value
+                
+                allExp.push(exp)
+            }
+            console.log(allExp);
+            
+        }
+
+        // [
+        //     {"organization": "TCS", "designation": "Jr. S E", "duration": "1 Year"},
+        //     {"organization": "XYZ", "designation": "Jr. S E", "duration": "1 Year"},
+        //     {"organization": "ABC", "designation": "Jr. S E", "duration": "1 Year"},
+        // ]
+    </script>
+</body>
+</html>
+
+
