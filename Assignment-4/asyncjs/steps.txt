@@ -1,0 +1,7 @@
+1. Node js
+2. create a folder
+3. initialize a project inside the folder - npm init
+4. install json-server - npm install json-server
+5. create db.json inside the same folder
+6. add a script - "server": "json-server --watch db.json"
+7. run - npm run server

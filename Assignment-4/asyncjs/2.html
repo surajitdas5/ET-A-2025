@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // let rn = Math.floor(Math.random()*1000)
+        // console.log(rn);
+
+        function getNumber(){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    resolve(Math.floor(Math.random()*1000))
+                }, 3000)
+            })
+        }
+
+        function evenOdd(num){
+            return new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    if(num%2 === 0){
+                        resolve("Even")
+                    } else {
+                        reject("Odd")
+                    }
+                }, 2000)
+            })
+        }
+
+        // async function operate(){
+        //     try{
+        //         let num = await getNumber();
+        //         console.log(num);
+        //         let result = await evenOdd(num)
+        //         console.log(result);
+        //     } catch(err){
+        //         console.log(err);
+        //     }
+        // } 
+        
+        // operate()
+
+        getNumber()
+        .then((n)=>{
+            console.log(n);
+            return evenOdd(n)
+        })
+        .then((result)=>{
+            console.log(result);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
