@@ -1,14 +1,14 @@
 {
-    "products": [
-        {
-            "id": "123",
-            "name": "mobile",
-            "price": 40000
-        },
-        {
-            "id": "124",
-            "name": "mouse",
-            "price": 500
-        }
-    ]
+  "products": [
+    {
+      "name": "Earphone",
+      "price": "5000",
+      "id": "9301"
+    },
+    {
+      "name": "Laptop",
+      "price": "30000",
+      "id": "e28d"
+    }
+  ]
 }

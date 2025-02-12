@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Product</h1>
+    <form action="" method="post" onsubmit="update(event)">
+        <input type="text" id="pname" placeholder="Product Name">
+        <input type="text" id="pprice" placeholder="Product Price">
+        <input type="submit" value="Update">
+    </form>
+    <p id="msg"></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        let urlParams = new URLSearchParams(window.location.search)
+        let id = urlParams.get("pid");
+        console.log(id);
+        let url = "http://localhost:3000/products/"+id
+        
+        let msg = document.getElementById("msg")
+        
+        async function getProductDetails(){
+            try {
+                let response = await axios.get(url)
+                let product = response.data
+                console.log(product);
+
+                document.getElementById("pname").value = product.name
+                document.getElementById("pprice").value = product.price
+                
+            } catch (error) {
+                alert("Invalid Id")
+                window.location = "product-display.html"
+            }
+        }
+        getProductDetails()
+
+
+        
+        async function update(e){
+            e.preventDefault()
+            try {
+                let name = document.getElementById("pname").value
+                let price = document.getElementById("pprice").value
+                // console.log(name, price);
+                let response = await axios.put(url, {"name": name, "price": price})
+                console.log(response);
+                if(response.status === 200){
+                    msg.innerHTML = "Product Updated"
+                    document.getElementById("pname").value = "" 
+                    document.getElementById("pprice").value = ""
+                }
+            } catch (error) {
+                console.log(error);
+                msg.innerHTML = "Product Not Updated"
+            }
+            
+        }
+    </script>
+</body>
+</html>

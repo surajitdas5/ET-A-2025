@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search)
+        let id = urlParams.get("pid");
+        console.log(id);
+        async function deleteProduct(id){
+           try {
+                let url = "http://localhost:3000/products/"+id
+                let response = await axios.delete(url)
+                console.log(response);
+                if(response.status === 200){
+                    alert("Product Deleted")
+                    window.location = "product-display.html"
+                }
+           } catch (error) {
+            console.log(error);
+            alert("Product not Deleted. Check Id.")
+            window.location = "product-display.html"
+           }
+        }
+        deleteProduct(id)
+        
+    </script>
+</body>
+</html>
