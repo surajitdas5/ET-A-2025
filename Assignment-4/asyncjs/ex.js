@@ -1,4 +1,4 @@
-let obj = {
-    "name": "Sam",
-    dob: new Date()
+let std = {
+    name: "sam", // name
+    "roll": 123
 }

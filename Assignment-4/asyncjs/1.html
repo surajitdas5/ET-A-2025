@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        <script>
-            // let promise = new Promise((resolve, reject)=>{
-            //     // resolve('Hello')
-            //     reject('Hello')
-            // })
-            // let promise = new Promise((abcd, xyz)=>{
-            //     abcd('Hello')
-            //     // xyz('Hello')
-            // })
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 
-            function devide(a, b) {
-                // let promise = new Promise((resolve, reject)=>{
-                return new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        if (b !== 0) {
-                            resolve(a / b)
-                        } else {
-                            reject('Divisor can not be zero')
-                        }
-                    }, 3000)
-                })
+    <script>
+        // let promise = new Promise((resolve, reject)=>{
+        //     // resolve("hi")
+        //     // reject("hi")
+        //     // reject(12345)
+        //     reject(1+2)
+        // })
+        // let promise = new Promise((abc, xyz)=>{
+        //     abc("hi")
+        //     // xyz("hi")
+        // })
 
-                // return promise;
-            }
+        // console.log(promise);
 
-            // console.log(promise);
-            async function operation() {
-                try {
-                    let result = await devide(3,2)
-                    // let result = await devide(3, 0)
-                    // console.log(result)
-                    console.log("Result: "+result);
-                } catch (err) {
-                    // console.log(err)
-                    console.log("Error: "+err);
-                }
-            }
-            operation()
-        </script>
-    </body>
+
+        function division(a,b){
+            return new Promise((resolve, reject) => {
+                setTimeout(()=>{
+                    if(b !== 0){
+                        resolve(a/b);
+                    } else {
+                        reject("Divisor can not be zero");
+                    }
+                }, 2000)
+            })
+        }
+
+    //    async function operate(){
+    //     try{
+    //         // let res = await division(4,2);
+    //         let res = await division(4,0);
+    //         console.log("result: ");
+    //         console.log(res);
+    //     } catch(err){
+    //         console.log("Error: "+err);
+    //     }
+    //    }
+    
+    //    operate()
+
+    // division(4,2)
+    division(4,0)
+    .then((result)=>{
+        console.log("result: "+result);
+    })
+    .catch((err)=>{
+        console.log("Error: "+err);
+    })
+        
+    </script>
+</body>
 </html>
