@@ -16,47 +16,45 @@
             margin: auto;
         }
         .product{
-            width: 200px;
-            border: 0.5px solid #ddd;
-            border-radius: 5px;
-            padding: 8px;
-            margin: 5px;
+            border: 1px solid #d0d0d0;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 4px;
+            width: 150px;
         }
         .product p{
-            margin: 4px 0px;
+            margin: 8px 0px;
         }
     </style>
 </head>
 <body>
+
     <div id="container">
 
     </div>
     
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        let url = "http://localhost:3000/products"
+        let url = "http://localhost:3000/product"
 
-        async function getUsers() {
+        async function getData() {
             let response = await axios.get(url)
-            // console.log(response.data);
+            console.log(response);
             let products = response.data
-            console.log(products);
-            let output = ``;
-            products.forEach( product => {
-                output += `
+            let op = ``;
+            products.forEach( p => {
+                op+= `
                     <div class='product'>
-                        <h5>${product.name}</h5>
-                        <p>${product.price}</p>
-                        <a href="product-update.html?pid=${product.id}">Update</a>
-                        <a href="prodcut-delete.html?pid=${product.id}">Delete</a>
+                        <h5>${p.name}</h5>
+                        <p>${p.price}</p>
+                        <a href="product-update.html?pid=${p.id}">Update</a>
+                        <a href="product-delete.html?pid=${p.id}">Delete</a>
                     </div>
                 `
             })
-            document.getElementById("container").innerHTML = output
-
+            document.getElementById("container").innerHTML = op
         }
-        getUsers()
+        getData()
     </script>
 </body>
 </html>

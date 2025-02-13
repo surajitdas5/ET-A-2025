@@ -9,52 +9,56 @@
     
 
     <script>
-        // let rn = Math.floor(Math.random()*1000)
+        // let rn = Math.floor(Math.random() * 1000)
         // console.log(rn);
 
-        function getNumber(){
-            return new Promise((resolve)=>{
+        function getAnumber(){
+            return new Promise((resolve, reject)=>{
                 setTimeout(()=>{
-                    resolve(Math.floor(Math.random()*1000))
-                }, 3000)
+                    let rn = Math.floor(Math.random() * 1000)
+                    resolve(rn)
+                }, 2000)
             })
         }
 
         function evenOdd(num){
             return new Promise((resolve, reject)=>{
                 setTimeout(()=>{
-                    if(num%2 === 0){
+                    if(num %2 ==0){
                         resolve("Even")
                     } else {
-                        reject("Odd")
+                        reject("odd")
                     }
-                }, 2000)
+                }, 1000)
             })
         }
 
-        // async function operate(){
+        // async function operation(){
         //     try{
-        //         let num = await getNumber();
+        //         let num = await getAnumber();
         //         console.log(num);
-        //         let result = await evenOdd(num)
+        //         let result = await evenOdd(num);
         //         console.log(result);
         //     } catch(err){
         //         console.log(err);
         //     }
-        // } 
-        
-        // operate()
+            
+            
+        // }
+        // operation()
 
-        getNumber()
-        .then((n)=>{
-            console.log(n);
-            return evenOdd(n)
+
+        getAnumber()
+        .then((num)=>{
+            console.log(num);
+            return evenOdd(num)
         })
         .then((result)=>{
             console.log(result);
         })
         .catch((err)=>{
             console.log(err);
+            
         })
     </script>
 </body>

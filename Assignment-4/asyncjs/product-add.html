@@ -14,32 +14,33 @@
 <body>
     <h1>Add Product</h1>
     <form action="" method="post" onsubmit="add(event)">
-        <input type="text" id="pname" placeholder="Product Name">
-        <input type="text" id="pprice" placeholder="Product Price">
-        <input type="submit" value="Add">
+        <input type="text" id="name" placeholder="Product Name">
+        <input type="text" id="price" placeholder="Product Price">
+        <input type="submit" value="ADD">
     </form>
-    <p id="msg"></p>
+    <p id="res"></p>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        let url = "http://localhost:3000/products"
-        let msg = document.getElementById("msg")
+        let res = document.getElementById("res");
         async function add(e){
-            e.preventDefault()
             try {
-                let name = document.getElementById("pname").value
-                let price = document.getElementById("pprice").value
-                // console.log(name, price);
+                e.preventDefault()
+                let name = document.getElementById("name").value
+                let price = document.getElementById("price").value
+                console.log(name, price);
+                let url = "http://localhost:3000/product"
                 let response = await axios.post(url, {"name": name, "price": price})
                 console.log(response);
+
                 if(response.status === 201){
-                    msg.innerHTML = "Product Added"
-                    document.getElementById("pname").value = "" 
-                    document.getElementById("pprice").value = ""
+                    res.innerHTML = "Product Added";
+                    document.getElementById("name").value = "" 
+                    document.getElementById("price").value = ""
                 }
             } catch (error) {
                 console.log(error);
-                msg.innerHTML = "Product Not Added"
+                res.innerHTML = "Product Not Added";
             }
             
         }

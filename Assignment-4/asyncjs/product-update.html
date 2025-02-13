@@ -14,56 +14,49 @@
 <body>
     <h1>Update Product</h1>
     <form action="" method="post" onsubmit="update(event)">
-        <input type="text" id="pname" placeholder="Product Name">
-        <input type="text" id="pprice" placeholder="Product Price">
+        <input type="text" id="name" placeholder="Product Name">
+        <input type="text" id="price" placeholder="Product Price">
         <input type="submit" value="Update">
     </form>
-    <p id="msg"></p>
+    <p id="res"></p>
+    <a href="product-display.html">Back</a>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-
-        let urlParams = new URLSearchParams(window.location.search)
-        let id = urlParams.get("pid");
+        let res = document.getElementById("res");
+        let ulrParams = new URLSearchParams(window.location.search)
+        let id = ulrParams.get("pid");
         console.log(id);
-        let url = "http://localhost:3000/products/"+id
-        
-        let msg = document.getElementById("msg")
-        
-        async function getProductDetails(){
-            try {
-                let response = await axios.get(url)
-                let product = response.data
-                console.log(product);
+        let url = "http://localhost:3000/product"
+        url = url+"/"+id
 
-                document.getElementById("pname").value = product.name
-                document.getElementById("pprice").value = product.price
-                
-            } catch (error) {
-                alert("Invalid Id")
-                window.location = "product-display.html"
-            }
+        async function getProduct() {
+            let response = await axios.get(url)
+            let product = response.data
+            console.log(product);
+            document.getElementById("name").value = product.name
+            document.getElementById("price").value = product.price
         }
-        getProductDetails()
 
+        getProduct()
 
-        
         async function update(e){
-            e.preventDefault()
             try {
-                let name = document.getElementById("pname").value
-                let price = document.getElementById("pprice").value
-                // console.log(name, price);
+                e.preventDefault()
+                let name = document.getElementById("name").value
+                let price = document.getElementById("price").value
+                console.log(name, price);
                 let response = await axios.put(url, {"name": name, "price": price})
                 console.log(response);
+
                 if(response.status === 200){
-                    msg.innerHTML = "Product Updated"
-                    document.getElementById("pname").value = "" 
-                    document.getElementById("pprice").value = ""
+                    res.innerHTML = "Product Updated";
+                    document.getElementById("name").value = "" 
+                    document.getElementById("price").value = ""
                 }
             } catch (error) {
                 console.log(error);
-                msg.innerHTML = "Product Not Updated"
+                res.innerHTML = "Product Not Updated";
             }
             
         }
