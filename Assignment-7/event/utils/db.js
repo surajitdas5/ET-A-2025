@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const DB_URL="mongodb+srv://sdas:12345@cluster0.pahbl.mongodb.net"
+const DB_URL="YOUR_MONGODB_URL"
 const DB_NAME="event-a"
 
 async function dbConnect(){
