@@ -10,11 +10,11 @@ const {
 
 const userRouter = express.Router()
 
-userRouter.get("/users", getAllUsers)
-userRouter.get("/users/:id",getUserById)
-userRouter.post("/users", adduser)
-userRouter.put('/users/:id',  updateUser)
-userRouter.delete('/users/:id', deleteUser)
+userRouter.get("/", getAllUsers)
+userRouter.get("/:id",getUserById)
+userRouter.post("", adduser)
+userRouter.put('/:id',  updateUser)
+userRouter.delete('/:id', deleteUser)
 
 
 

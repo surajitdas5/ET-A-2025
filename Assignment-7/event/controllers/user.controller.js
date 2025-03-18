@@ -27,7 +27,7 @@ async function getUserById(req, res){
 async function adduser(req, res){
     try{
         let newUser = req.body
-        console.log(newUser)
+        // console.log(newUser)
         let user = await User.create(newUser)
         res.status(201).send(user)
     } catch (error) {
