@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 const Navbar = () => {
+  const { token, name, logout } = useAuth()
+  const handleLogout = () => {
+    logout()
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-dark text-light" data-bs-theme="dark">
   <div className="container-fluid">
@@ -17,9 +22,34 @@ const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link" to="/search">Search</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/signup">Sign Up</Link>
-        </li>
+        {
+          token ? (
+            <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/addevent">Add Event</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/myevents">My Events</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/" onClick={handleLogout}>Logout</Link>
+            </li>
+            <li className="nav-item">
+              <span className="nav-link">Welcome, {name}</span>
+            </li>
+            </>
+          ) : (
+            <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/signup">Sign Up</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/signin">Sign In</Link>
+            </li>
+            </>
+          )
+        }
+        
         
       </ul>
     </div>
